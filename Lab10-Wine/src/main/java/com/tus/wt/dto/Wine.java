@@ -3,6 +3,7 @@ package com.tus.wt.dto;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity @Table(name="wines")
 public class Wine
@@ -11,20 +12,38 @@ public class Wine
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
     private Long id;
-
-	@Column(name = "wine_name")
-    private String wineName;
+	private int year;
+	
+	@Size(min=3)
+	private String name;
+	private String grapes;
+	private String country;
+	private String region;
+	
+	@Lob
+	private String description;
+	private String picture;
 	
     public Wine()
     {
     }
 
-    public Wine(String wineName)
-    {
-        this.wineName = wineName;
-    }
 
-    public Long getId()
+    public Wine(Long id, int year, @Size(min = 3) String name, String grapes, String country, String region,
+			String description, String picture) {
+		super();
+		this.id = id;
+		this.year = year;
+		this.name = name;
+		this.grapes = grapes;
+		this.country = country;
+		this.region = region;
+		this.description = description;
+		this.picture = picture;
+	}
+
+
+	public Long getId()
     {
         return id;
     }
@@ -34,13 +53,13 @@ public class Wine
         this.id = id;
     }
 
-	public String getWineName() {
-		return wineName;
+
+	@Override
+	public String toString() {
+		return "Wine [id=" + id + ", year=" + year + ", name=" + name + ", grapes=" + grapes + ", country=" + country
+				+ ", region=" + region + ", description=" + description + ", picture=" + picture + "]";
 	}
 
-	public void setWineName(String wineName) {
-		this.wineName = wineName;
-	}
     
     
 
