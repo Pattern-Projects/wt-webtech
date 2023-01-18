@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class JpaDemoController {
+public class WineService {
 	 @Autowired
 	 private WineRepository wineRepository;
 	
