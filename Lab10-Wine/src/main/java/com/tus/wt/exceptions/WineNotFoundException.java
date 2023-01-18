@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.tus.wt.dto.Wine;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class ResourceNotFoundException extends Exception {
-	public ResourceNotFoundException() {}
-	public ResourceNotFoundException(String message) {
+public class WineNotFoundException extends Exception {
+	public WineNotFoundException() {}
+	public WineNotFoundException(String message) {
 		super(message);
 	}
 }

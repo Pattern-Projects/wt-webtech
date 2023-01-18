@@ -1,7 +1,7 @@
 package com.tus.wt.controllers;
 
 import com.tus.wt.dto.Wine;
-import com.tus.wt.exceptions.ResourceNotFoundException;
+import com.tus.wt.exceptions.WineNotFoundException;
 import com.tus.wt.repositories.WineRepository;
 
 import java.util.ArrayList;
@@ -34,12 +34,12 @@ public class JpaDemoController {
 	}
 	
 	@GetMapping("/wines/{id}")
-	public ResponseEntity<Wine> getWineById(@PathVariable(value = "id") Long wineId) throws ResourceNotFoundException {
+	public ResponseEntity<Wine> getWineById(@PathVariable(value = "id") Long wineId) throws WineNotFoundException {
 		Optional<Wine> wine = wineRepository.findById(wineId);
 		if (wine.isPresent()) {
 			return ResponseEntity.ok().body(wine.get());
 		} else {
-			throw new ResourceNotFoundException("Wine not found: " + wineId);
+			throw new WineNotFoundException("Wine not found: " + wineId);
 		}
 	}
 	
