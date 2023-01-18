@@ -25,7 +25,7 @@ public class WineService {
 	
 	@GetMapping("/")
 	public String index() {
-		return "hi there";
+		return "<button>Import</button>";
 	}
 	
 	@GetMapping("/wines")

@@ -5,13 +5,14 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-@Entity @Table(name="wines")
+@Entity @Table(name="wine")
 public class Wine
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
     private Long id;
+	
 	private int year;
 	
 	@Size(min=3)
@@ -52,6 +53,77 @@ public class Wine
     {
         this.id = id;
     }
+
+    
+
+	public int getYear() {
+		return year;
+	}
+
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getGrapes() {
+		return grapes;
+	}
+
+
+	public void setGrapes(String grapes) {
+		this.grapes = grapes;
+	}
+
+
+	public String getCountry() {
+		return country;
+	}
+
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+	public String getRegion() {
+		return region;
+	}
+
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public String getPicture() {
+		return picture;
+	}
+
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 
 
 	@Override
