@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +47,18 @@ public class WineService {
 	 @PostMapping("/wines")
 	 public Wine createWine(@RequestBody Wine wine) {
 		return wineRepository.save(wine);
+	 }
+	 
+	 @PutMapping("/wines/{id}")
+	 public ResponseEntity<Wine> updateWine(@PathVariable(value = "id") Long wineId, @RequestBody Wine wine) throws WineNotFoundException {
+			Optional<Wine> savedWine = wineRepository.findById(wineId);
+			if (savedWine.isPresent()) {
+				wine.setId(wineId);
+				wineRepository.save(wine);
+				return ResponseEntity.ok().body(savedWine.get());
+			} else {
+				throw new WineNotFoundException("Wine not found: " + wineId);
+			}
 	 }
 	 
 	 @DeleteMapping("/wines/{id}")
