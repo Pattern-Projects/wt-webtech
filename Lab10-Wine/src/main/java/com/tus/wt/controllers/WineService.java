@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,6 +43,17 @@ public class WineService {
 			return ResponseEntity.ok().body(wine.get());
 		} else {
 			throw new WineNotFoundException("Wine not found: " + wineId);
+		}
+	}
+	
+	@RequestMapping("/wines/name/{name}")
+	public ResponseEntity<List<Wine>> getWineByName(@PathVariable("name") String name) {
+		List<Wine> winesByName = new ArrayList<>();
+		winesByName = wineRepository.findByNameContaining(name);
+		if (winesByName.size()>0) {
+			return new ResponseEntity(winesByName, HttpStatus.OK);
+		} else {
+			return new ResponseEntity(winesByName, HttpStatus.NO_CONTENT);			
 		}
 	}
 	
