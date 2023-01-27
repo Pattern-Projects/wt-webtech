@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WineCellar Client Interface</title>
+<meta http-equiv="Cache-control" content="no-cache">
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/main_UI.js"></script>
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+textarea{
+margin-bottom:15px;
+margin-top:5px;
+height:200px;
+width:350px;
+}
+ul{
+list-style-type:none;
+padding-left:0px;
+margin-top:0px;
+}
+li a{
+ text-decoration: none;
+ display:block;
+ color: #000000;
+ }
+
+</style>
+</head>
+<body>
+<h1 class="w3-center">WineCellar Client Interface</h1>
+  <h2 class="w3-row w3-container w3-center"><a href="index.html">[Home Link]</a></h2> 
+  <div class="w3-row w3-center">
+  <input type="text" id="searchKey"/>
+  <button class="w3-button w3-border w3-hover-deep-purple" id="btnSearch">Search</button>
+   <button class="w3-button w3-border w3-hover-deep-purple" id="btnAdd">New Wine</button>
+  </div>
+  
+  <div class ="w3-row">
+  <div class="w3-container w3-third">
+  <ul id="wineList" class="w3-ul"></ul>
+  </div>
+  <div class="w3-container w3-third">
+  <table class="w3-table" style="width:100%">
+  <tr>
+   <td>ID</td>
+   <td><input id="wineId" name="id" type="text" disabled/></td>
+   </tr>
+   
+    <tr>
+   <td>Name</td>
+   <td><input type="text" id="name" name="name"/></td>
+   </tr>
+    <tr>
+   <td>Grapes</td>
+   <td><input type="text" id="grapes" name="grapes"/></td>
+   </tr>
+   
+   <td>Country</td>
+   <td><input type="text" id="country" name="country"/></td>
+   </tr>
+   
+   <td>Region</td>
+   <td><input type="text" id="region" name="region"/></td>
+   </tr>
+   
+   <td>Year</td>
+   <td><input type="text" id="year" name="year"/></td>
+   </tr>
+   
+   <tr>
+   <td colspan="2">
+   <h3>Notes</h3>
+   <textarea id="description" name="description"></textarea>
+   </td>
+   </tr>
+   
+   <tr>
+   <td><button class="w3-button w3-border w3-hover-deep-purple" id="btnSave">Save</button></td>
+   <td><button class="w3-button w3-border w3-hover-deep-purple" id="btnDelete">Delete</button></td>
+   </table>
+  
+  </div>
+  <div class ="w3-container w3-third">    <img id="pic" class="w3-image" width="100%"/>      </div>
+  
+</body>
+
+
+
+</html>

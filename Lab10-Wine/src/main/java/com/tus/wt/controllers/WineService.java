@@ -26,10 +26,10 @@ public class WineService {
 	 @Autowired
 	 private WineRepository wineRepository;
 	
-	@GetMapping("/")
-	public String index() {
-		return "<button>Import</button>";
-	}
+//	@GetMapping("/")
+//	public String index() {
+//		return "index";
+//	}
 	
 	@GetMapping("/wines")
 	List<Wine> getWines() {
@@ -45,7 +45,7 @@ public class WineService {
 			throw new WineNotFoundException("Wine not found: " + wineId);
 		}
 	}
-	
+	//
 	@RequestMapping("/wines/name/{name}")
 	public ResponseEntity<List<Wine>> getWineByName(@PathVariable("name") String name) {
 		List<Wine> winesByName = new ArrayList<>();
